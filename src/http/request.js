@@ -2,7 +2,7 @@ import axios from 'axios'
 import { Toast } from 'vant'
 
 const request = axios.create({
-    baseURL: ' http://192.168.85.240:1337/api'
+    baseURL: 'http://192.168.1.107:1337/api'
 })
 
 request.defaults.baseURL + 

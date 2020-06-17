@@ -1,10 +1,12 @@
 import io from 'socket.io-client'
 import { Toast } from 'vant'
-const socket = io('http://localhost:1337')
+const socket = io('http://192.168.1.107:1337')
 let id = localStorage.getItem('userId')
 
 import store from '../../store/index'
 export const  now = () => {
+    console.log(id);
+    
     socket.emit('now',{msg:'正在输入..',id})
 }
 
@@ -13,10 +15,12 @@ export const line = () => {
 }
 
 export const emitContent = (value) => {
+    
     socket.emit('UseremitContent',{value,id})
 } 
 
-socket.on('hehe',data => {
+socket.on('webMsg',data => {
+    
   store.commit('chat/ADD_CHAT',data)
 }) 
 
