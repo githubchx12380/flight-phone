@@ -1,4 +1,5 @@
 import io from 'socket.io-client'
+import { Toast } from 'vant'
 const socket = io('http://localhost:1337')
 let id = localStorage.getItem('userId')
 
@@ -22,9 +23,14 @@ socket.on('hehe',data => {
 
 // 管理员列表
 socket.on('adminlist',data => {
-    console.log(data);
+    console.log(data[0]);
     
+    Toast.fail('已为您连接客服:' + data[0].name)
     store.commit('chat/ADMIN_LISt',data)
+})
+socket.on('Notadmin',data => {
+    
+    Toast.fail('当前无在线客服')
 })
 
 

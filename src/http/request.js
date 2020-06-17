@@ -5,6 +5,7 @@ const request = axios.create({
     baseURL: ' http://192.168.85.240:1337/api'
 })
 
+request.defaults.baseURL + 
 
 request.interceptors.request.use(function (config) {
     if(localStorage.getItem('token')&&localStorage.getItem('userId')) {
